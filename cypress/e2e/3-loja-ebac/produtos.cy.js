@@ -13,6 +13,8 @@ describe('Funcionalidade:  Produtos', () => {
             //.eq(2)
             cy.contains ('Apollo Running Short')
             .click()
+
+            cy.get('#tab-title-description > a').should('contain','Descrição')
         
     });
 });

@@ -3,7 +3,7 @@
 describe('Funcionalidade login' , () => {
 
         beforeEach(()=> {
-                cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+                cy.visit('/minha-conta/')
 
         });
 
@@ -43,4 +43,4 @@ describe('Funcionalidade login' , () => {
                 cy.get('.woocommerce-error').should('exist')
         });
                 
-        })
+})
