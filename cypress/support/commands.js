@@ -47,4 +47,3 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
->>>>>>> e2279506f63f3a169cfd90900f1d92492186afa4
