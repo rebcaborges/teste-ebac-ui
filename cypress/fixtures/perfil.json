@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
         "usuario":"rborges.qaa@gmail.com.br",
         "senha": "Teste00@@##"
+=======
+        "usuario": "rborges.qa@gmail.com.br",
+        "senha": "Teste00@@"
+>>>>>>> e2279506f63f3a169cfd90900f1d92492186afa4
 
 
 }
