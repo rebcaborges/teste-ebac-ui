@@ -24,11 +24,8 @@ describe('Funcionalidade Cadastro ', () => {
         
     });
 
-<<<<<<< HEAD
  it('Deve completar o cadastro com sucesso - Usanod variaveis', () => {
-=======
  it.only('Deve completar o cadastro com sucesso - Usanod variaveis', () => {
->>>>>>> e2279506f63f3a169cfd90900f1d92492186afa4
         var nome = (faker.person.firstName())
         var email = faker.internet.email(nome)
         var sobrenome =(faker.person.lastName())
@@ -47,7 +44,6 @@ describe('Funcionalidade Cadastro ', () => {
         
     });
 
-<<<<<<< HEAD
     //it('Deve completar  o cadastro com sucesso usando comando customizado ', () => {
       //  cy.preCadastro(faker.internet.email(), 'teste@123', faker.person.firstName, faker.person.lastName)
       //              cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
@@ -55,7 +51,6 @@ describe('Funcionalidade Cadastro ', () => {
       //  });
 
 
-=======
->>>>>>> e2279506f63f3a169cfd90900f1d92492186afa4
+
     
 });
