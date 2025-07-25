@@ -1,5 +1,7 @@
 //const { it } = require('mocha')
 
+//import cypress = require("cypress")
+
         Cypress.Commands.add('login', (usuario, senha) => { 
                 cy.get('#username').type(usuario)
                 cy.get('#password').type(senha)
@@ -19,6 +21,12 @@
 
         })
 
+        Cypress.Commands.add('detalhesConta', (nome, sobrenome, usuario) => {
+                cy.get('#account_first_name').type(nome)
+                cy.get('#account_last_name').type(sobrenome)
+                cy.get('#account_last_name').type(usuario)
+                cy.get('.woocommerce-Button').click()
+        })
         
         
 

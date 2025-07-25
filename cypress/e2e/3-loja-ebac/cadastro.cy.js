@@ -24,7 +24,7 @@ describe('Funcionalidade Cadastro ', () => {
         
     });
 
- it('Deve completar o cadastro com sucesso - Usanod variaveis', () => {
+ it('Deve completar o cadastro com sucesso - Usando variaveis', () => {
         var nome = (faker.person.firstName())
         var email = faker.internet.email(nome)
         var sobrenome =(faker.person.lastName())
@@ -50,7 +50,10 @@ describe('Funcionalidade Cadastro ', () => {
       });  
     
     
-         });
+
+    });
+
+
 
 
 
