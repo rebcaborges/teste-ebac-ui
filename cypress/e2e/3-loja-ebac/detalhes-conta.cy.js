@@ -6,7 +6,10 @@ describe ('Funcionalidade: detalhes da conta', () => {
 
         beforeEach(() => {
             cy.visit('/minha-conta/edit-account/')
-            cy.login('rborges.qaa@gmail.com.br', 'Teste00@@##');
+            cy.fixture('perfil').then(login => {
+                 cy.login(login.usuario, login.senha);
+            })
+           
         });
 
         it('Deve completar detalhes da conta com sucesso', () => {
