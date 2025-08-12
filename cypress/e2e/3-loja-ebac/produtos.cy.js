@@ -1,35 +1,31 @@
-import { it } from "mocha";
+/// <reference types="cypress"/> 
+import produtoPage from "../../support/page-objects/produto.page";
 
-/// reference types="cypress"/> 
-describe('Funcionalidade:  Produtos', () => {
-
-     beforeEach(() => {
-            produtoPage.visitarUrl()
-        });
-
-    it('Deve selecionar um produto da lista', () => {
-        
-        cy.get('.block-inner')
-            //.first()
-            //.last()
-            //.eq(2)
-            cy.contains ('Apollo Running Short')
-            .click()
-
-            cy.get('#tab-title-description > a').should('contain','Descrição')
-        
+describe('Funcionalidade: Produtos', () => {
+  
+    beforeEach(() => {
+        produtoPage.visitarUrl();
     });
 
-    it('Deve buscar um produto com sucesso ', () => {
-        produtoPage.buscarProduto('')
+    it('Deve selecionar um produto da lista', () => {
+        cy.get('.products > .row');
+        cy.contains('Abominable Hoodie').click();
+        cy.get('#tab-title-description > a')
+            .should('contain', 'Descrição');
+    });
+
+    it('Deve buscar um produto com sucesso', () => {
+        produtoPage.buscarProduto('Abominable Hoodie');
     });    
 
-      it('Deve visitar a pagina de produtos', () => {
-        
+    it('Deve visitar a página de produtos', () => {
+        produtoPage.visitarUrl();
     }); 
 
-      it('Deve adicionar um produto com sao carrinho', () => {
-        
+    it('Deve adicionar um produto com sucesso ao carrinho', () => {
+        cy.contains('Abominable Hoodie').click();
+        cy.get('.single_add_to_cart_button').click();
+        cy.get('.woocommerce-message')
+            .should('contain', 'foi adicionado no seu carrinho');
     }); 
-
 });
