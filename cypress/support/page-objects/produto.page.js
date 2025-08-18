@@ -5,10 +5,10 @@ class ProdutosPage {
         cy.visit('/produtos');
     }
 
-    buscarProduto(nome) {
-        cy.get('input[type="search"]').type(nome);
-        cy.get('button[type="submit"]').click();
-    }
+   buscarProduto(nome) {
+    cy.get('[name="s"]').eq(1).type(nome)      
+    cy.get('.button-search').eq(1).click()     
+}
 
     buscarProdutoLista(nomeProduto) {
         cy.get('.products > .row')

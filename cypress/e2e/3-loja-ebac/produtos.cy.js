@@ -9,13 +9,15 @@ describe('Funcionalidade: Produtos', () => {
 
     it('Deve selecionar um produto da lista', () => {
         cy.get('.products > .row');
+
         cy.contains('Abominable Hoodie').click();
-        cy.get('#tab-title-description > a')
-            .should('contain', 'Descrição');
+        cy.get('#tab-title-description > a').should('contain', 'Descrição');
     });
 
-    it('Deve buscar um produto com sucesso', () => {
-        produtoPage.buscarProduto('Abominable Hoodie');
+    it.only('Deve buscar um produto com sucesso', () => {
+        let produto = 'Zeppelin yoga Pant'
+        produtoPage.buscarProduto(produto);
+        cy.get('.product_title').should('contain','Zeppelin Yoga Pant')
     });    
 
     it('Deve visitar a página de produtos', () => {
