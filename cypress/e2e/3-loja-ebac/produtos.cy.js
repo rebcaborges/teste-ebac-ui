@@ -14,20 +14,46 @@ describe('Funcionalidade: Produtos', () => {
         cy.get('#tab-title-description > a').should('contain', 'Descrição');
     });
 
-    it.only('Deve buscar um produto com sucesso', () => {
-        let produto = 'Zeppelin yoga Pant'
-        produtoPage.buscarProduto(produto);
-        cy.get('.product_title').should('contain','Zeppelin Yoga Pant')
+    it('Deve buscar um produto com sucesso', () => {
+        let produto = 'Zeppelin Yoga Pant'
+        produtoPage.buscarProduto(produto)
+        cy.get('.product_title').should('contain',produto)
     });    
 
     it('Deve visitar a página de produtos', () => {
-        produtoPage.visitarUrl();
+        produtoPage.visitarProduto('Zeppelin-Yoga-Pant');
+        cy.get('.product_title').should('contain','Zeppelin Yoga Pant')
+
     }); 
 
     it('Deve adicionar um produto com sucesso ao carrinho', () => {
-        cy.contains('Abominable Hoodie').click();
-        cy.get('.single_add_to_cart_button').click();
-        cy.get('.woocommerce-message')
-            .should('contain', 'foi adicionado no seu carrinho');
+        let qtd = 1
+        produtoPage.buscarProduto('Abominable Hoodie')
+        produtoPage.addProdutoCarrinho('L','Red', qtd)
+        cy.get('.woocommerce-message').should('contain',' “Abominable Hoodie” foi adicionado no seu carrinho.')
     }); 
+      it.only('Deve adicionar um produto com sucesso ao carrinho buscando da massa de dados', () => {
+        cy.fixture('produtos').then(dados => {
+       
+        produtoPage.buscarProduto(dados[1].nomeProduto)
+        produtoPage.addProdutoCarrinho(
+        dados[0].tamanho,
+        dados[0].cor,
+        dados[0].quantidade)
+
+        cy.get('.woocommerce-message').should('contain',dados[1].nomeProduto)
+            
+    })
+        
+        
+        
+    });   
+
+
 });
+
+
+// cy.contains('Abominable Hoodie').click();
+       // cy.get('.single_add_to_cart_button').click();
+       // cy.get('.woocommerce-message')
+       // should('contain', 'foi adicionado no seu carrinho');
