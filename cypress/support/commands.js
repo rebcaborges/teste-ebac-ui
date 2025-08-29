@@ -1,32 +1,31 @@
 //const { it } = require('mocha')
 
 //import cypress = require("cypress")
+Cypress.Commands.add('login', (usuario, senha) => { 
+    cy.get('#username').type(usuario)
+    cy.get('#password').type(senha)
+    cy.get('.woocommerce-form > .button').click()
+})
 
-        Cypress.Commands.add('login', (usuario, senha) => { 
-                cy.get('#username').type(usuario)
-                cy.get('#password').type(senha)
-                cy.get('.woocommerce-form > .button').click()
+Cypress.Commands.add('preCadastro', (email, senha, nome, sobrenome) => {
+    cy.get('#reg_email').type(email)
+    cy.get('#reg_password').type(senha)
+    cy.get(':nth-child(4) > .button').click()
+    cy.get('.woocommerce-MyAccount-navigation-link--edit-account > a').click()
+    cy.get('#account_first_name').type(nome)
+    cy.get('#account_last_name').type(sobrenome)
+    // Se precisar do campo Display Name, ajuste o seletor abaixo:
+    // cy.get('#account_display_name').clear().type(nome) 
+    cy.get('.woocommerce-Button').click()
+})
 
- })
-        Cypress.Commands.add('preCadastro' ,(email, senha, nome, sobrenome)  => {
+Cypress.Commands.add('detalhesConta', (nome, sobrenome, displayName) => {
+    cy.get('#account_first_name').clear().type(nome)
+    cy.get('#account_last_name').clear().type(sobrenome)
+    cy.get('#account_display_name').clear().type(displayName) // Ajuste se o seletor estiver correto
+    cy.get('.woocommerce-Button').click()
+})
 
-        cy.get('#reg_email').type(email)
-        cy.get('#reg_password').type(senha)
-        cy.get(':nth-child(4) > .button').click()
-        cy.get('.woocommerce-MyAccount-navigation-link--edit-account > a').click()
-        cy.get('#account_first_name').type(nome)
-        cy.get('#account_last_name').type(sobrenome)
-        //cy.wait(5000)
-        cy.get('.woocommerce-Button').click()
-
-        })
-
-        Cypress.Commands.add('detalhesConta', (nome, sobrenome, usuario) => {
-                cy.get('#account_first_name').type(nome)
-                cy.get('#account_last_name').type(sobrenome)
-                cy.get('#account_last_name').type(usuario)
-                cy.get('.woocommerce-Button').click()
-        })
         
         
 
